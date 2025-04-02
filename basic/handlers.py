@@ -47,10 +47,10 @@ async def send_welcome(message: Message, state: FSMContext):
                                caption=text)
     await state.set_state(Send.text)
 
-@router.message()
-async def get_video_file_id(message: Message):
-    video_id = message.video.file_id
-    await message.answer(f"file_id этого видео: {video_id}")
+# @router.message()
+# async def get_video_file_id(message: Message):
+#     video_id = message.video.file_id
+#     await message.answer(f"file_id этого видео: {video_id}")
 
 
 @router.message(Send.text)
