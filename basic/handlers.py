@@ -37,8 +37,14 @@ def create_contact_button()->ReplyKeyboardBuilder:
 
 @router.message(Command("start"))
 async def send_welcome(message: Message, state: FSMContext):
-    await message.answer_video(video='BAACAgIAAxkBAAO6Z2-6sDeKhQYl0AMsnOrX7djm7ooAAkprAAKalIBLU3a7yWFhbFk2BA',
-                               caption='Мы быстро решаем задачи по дому, для этого просто запишите видео и отправьте в бот!')
+    text = """
+1. Снимите видео
+2. Отправьте его в бот
+3. Мы с Вами свяжемся
+4. И всё решим удаленно и на месте!
+    """
+    await message.answer_video(video='BAACAgIAAxkBAAIB_GftCTo0Mp6MuNu1NIBgpSiWJRc3AAKtcAACWk1hS5WOjXenfmNjNgQ',
+                               caption=text)
     await state.set_state(Send.text)
 
 @router.message()
@@ -157,7 +163,7 @@ async def user_price(callback: CallbackQuery, bot: Bot):
         await bot.send_invoice(
             chat_id=callback.from_user.id,
             title="Оплата услуги",
-            description="Оплата услуги",
+            description="Сумма для согласования, оплачивайте после выполнения работ",
             provider_token=PAY_TOKEN,
             payload=f"price",
             currency="rub",
