@@ -163,7 +163,7 @@ async def user_price(callback: CallbackQuery, bot: Bot):
         await bot.send_invoice(
             chat_id=callback.from_user.id,
             title="Оплата услуги",
-            description="Сумма для согласования, оплачивайте после выполнения работ",
+            description="Оплачивайте после выполнения работ",
             provider_token=PAY_TOKEN,
             payload=f"price",
             currency="rub",
